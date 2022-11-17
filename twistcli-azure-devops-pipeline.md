@@ -25,6 +25,19 @@ curl -X POST \
             -H 'Content-Type: application/json' \
             -d '{"username":"Access-Key","password":"Secret-key"}'
 ```
+The command above outputs a JWT that can be used for authenticating to the Prisma Cloud API when downloading the twistcli binary and accessing image scans.
+```
+{
+           "token": "<JWT>",
+           "message": "login_successful",
+           "customerNames": [
+           {
+          "customerName": "Test",
+          "tosAccepted": true
+          }
+         ]
+        }
+```
 
 **Note**: In a production scenario step 2 can be eliminated by installing the twistcli binary on Azure self-hosted build agents ensuring that all developers have access to image scanning capabilities for their individual pipelines.
 
