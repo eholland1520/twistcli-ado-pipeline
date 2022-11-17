@@ -5,13 +5,6 @@ The following document is provided as high level example of how to integrate Pri
 1. Create Access Keys
 2. Create JWT
 
-#### Steps
-1. Retrieve access token and console url from Azure Key Vault
-2. Use access key to download and install the TwistCLI binary
-3. Build a docker image
-4. Scan a docker image using TwistCLI (Pass/Fail)
-5. If the image passes the previous step (5), push the image to ACR
-
 ### Create Access Keys
 Settings --> Access Control --> Access keys --> Click "Add" button and select "Access Key"
 
@@ -44,7 +37,12 @@ The command above outputs a JWT that can be used for authenticating to the Prism
 
 **Note**: In a production scenario step 2 can be eliminated by installing the twistcli binary on Azure self-hosted build agents ensuring that all developers have access to image scanning capabilities for their individual pipelines.
 
-
+#### Buile Pipeline Steps
+1. Retrieve access token and console url from Azure Key Vault
+2. Use access key to download and install the TwistCLI binary
+3. Build a docker image
+4. Scan a docker image using TwistCLI (Pass/Fail)
+5. If the image passes the previous step (5), push the image to ACR
 
 #### TwistCLI Command Line
 The Azure DevOps pipeline executes the following command
