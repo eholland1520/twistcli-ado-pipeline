@@ -17,6 +17,9 @@ Settings --> Access Control --> Access keys --> Click "Add" button and select "A
 
 ![prisma-cloud-access-key-create](prisma-cloud-access-key-create.png)
 
+![prisma-cloud-access-key-credentials.png](prisma-cloud-access-key-credentials.png)
+Save the password in a secure place like Azure Keyvault for retrieval during the Azure DevOps pipeline
+
 ### Create a JWT 
 [Detailed instructions can be found here](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
 ```
