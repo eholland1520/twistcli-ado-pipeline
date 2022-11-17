@@ -14,7 +14,9 @@ The following document is provided as high level example of how to integrate Pri
 
 ### Create Access Keys
 Settings --> Access Control --> Access keys --> Click "Add" button and select "Access Key"
+
 ![prisma-cloud-access-key-create](prisma-cloud-access-key-create.png)
+
 ### Create a JWT 
 [Detailed instructions can be found here](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
 ```
