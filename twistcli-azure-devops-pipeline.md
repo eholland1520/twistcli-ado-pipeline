@@ -4,6 +4,11 @@ The following document is provided as high level example of how to integrate Pri
 **Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
 ![Screen Shot 2022-11-16 at 12.49.32 PM.png](/.attachments/Screen%20Shot%202022-11-16%20at%2012.49.32%20PM-63f0a7db-d315-4719-bcdd-3089b25ff800.png)
 
+#### Pre-requisites
+1. Create Access Keys
+2. Create JWT with curl command
+3. Access to an Azure Container Registry (ACR)
+
 #### Steps
 1. Retrieve access token and console url from Azure Key Vault
 2. Use access key to download and install the TwistCLI binary
@@ -12,7 +17,7 @@ The following document is provided as high level example of how to integrate Pri
 5. If the image passes the previous step (5), push the image to ACR
 
 ### Get a JWT 
-https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail
+[Get a JWT](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
 ```
 curl -X POST \
             https://api.prismacloud.io/login \
