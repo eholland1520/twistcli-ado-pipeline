@@ -3,7 +3,7 @@ The following document is provided as high level example of how to integrate Pri
 
 #### Pre-requisites
 1. Create Access Keys
-2. Create JWT with curl command
+2. Create JWT
 
 #### Steps
 1. Retrieve access token and console url from Azure Key Vault
