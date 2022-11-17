@@ -60,7 +60,7 @@ The build pipeline can either be executed from the classic web based editor or v
 * Yaml - Create a yaml file that can be stored along with other source code files for the project.
 
 #### Classic Editor Pipeline
-![azure-devops-pipeline-prisma-scan-image](azure-devops-pipeline-prisma-scan-image.png)
+![azure-devops-pipeline-editor](azure-devops-pipeline-editor.png)
 
 #### YAML Pipeline
 ```
