@@ -93,7 +93,4 @@ jobs:
       repository: rabbitmq-prisma
       command: push
       tags: prisma
-...
-
-
 ```
