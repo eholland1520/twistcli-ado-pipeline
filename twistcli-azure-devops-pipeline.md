@@ -4,7 +4,6 @@ The following document is provided as high level example of how to integrate Pri
 #### Pre-requisites
 1. Create Access Keys
 2. Create JWT with curl command
-3. Access to an Azure Container Registry (ACR)
 
 #### Steps
 1. Retrieve access token and console url from Azure Key Vault
@@ -13,7 +12,10 @@ The following document is provided as high level example of how to integrate Pri
 4. Scan a docker image using TwistCLI (Pass/Fail)
 5. If the image passes the previous step (5), push the image to ACR
 
-### Get a JWT 
+### Create Access Keys
+Settings --> Access Control --> Access keys --> Click "Add" button and select "Access Key"
+
+### Create a JWT 
 [Detailed instructions can be found here](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
 ```
 curl -X POST \
