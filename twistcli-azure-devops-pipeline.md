@@ -48,10 +48,10 @@ The command above outputs a JWT that can be used for authenticating to the Prism
 The Azure DevOps pipeline executes the following twistcli commands during build pipeline execution.
 
 ```
-#vDownload the twistcli binary from the console
+#vDownload the twistcli binary from the console (Task: Install TwistCLI)
 curl --progress-bar -L -k --header "authorization: Bearer __prisma-accesstoken__" __prisma-consoleurl__/api/v1/util/twistcli > twistcli; chmod a+x twistcli;
 
-# Scan the prisma-rabbitmq docker container
+# Scan the prisma-rabbitmq docker container (Task: Scan Image with TwistCLI
 ./twistcli images scan --details --address __prisma-consoleurl__ --token __prisma-accesstoken__ youracr.azurecr.io/rabbitmq-prisma:prisma
 ```
 
