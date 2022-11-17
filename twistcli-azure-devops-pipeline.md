@@ -45,7 +45,8 @@ The command above outputs a JWT that can be used for authenticating to the Prism
 5. If the image passes the previous step (5), push the image to ACR
 
 #### TwistCLI Command Line
-The Azure DevOps pipeline executes the following command
+The Azure DevOps pipeline executes the following twistcli commands during build pipeline execution.
+
 ```
 #vDownload the twistcli binary from the console
 curl --progress-bar -L -k --header "authorization: Bearer __prisma-accesstoken__" __prisma-consoleurl__/api/v1/util/twistcli > twistcli; chmod a+x twistcli;
@@ -54,6 +55,7 @@ curl --progress-bar -L -k --header "authorization: Bearer __prisma-accesstoken__
 ./twistcli images scan --details --address __prisma-consoleurl__ --token __prisma-accesstoken__ youracr.azurecr.io/rabbitmq-prisma:prisma
 ```
 
+The build pipeline can either be executed from the classic web based editor or via yaml template.
 * Graphical Editor - Use the classic graphical editor to build your pipeline in the web browser.
 * Yaml - Create a yaml file that can be stored along with other source code files for the project.
 
