@@ -1,9 +1,6 @@
 ## TwistCLI Integration into Azure DevOps Pipeline
 The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into and Azure DevOps pipeline using either the classic graphical editor in ADO or via YAML pipeline template.
 
-**Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
-![Screen Shot 2022-11-16 at 12.49.32 PM.png](twistcli-scanner-report.png)
-
 #### Pre-requisites
 1. Create Access Keys
 2. Create JWT with curl command
@@ -95,3 +92,6 @@ jobs:
       command: push
       tags: prisma
 ```
+### Image Scanner Report
+**Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
+![Screen Shot 2022-11-16 at 12.49.32 PM.png](twistcli-scanner-report.png)
