@@ -31,10 +31,10 @@ curl -X POST \
 The Azure DevOps pipeline executes the following command
 ```
 Downloads the twistcli binary from the console
-curl --progress-bar -L -k --header "authorization: Bearer [__prisma-accesstoken__]" [__prisma-consoleurl__]/api/v1/util/twistcli > twistcli; chmod a+x twistcli;
+curl --progress-bar -L -k --header "authorization: Bearer __prisma-accesstoken__" __prisma-consoleurl__/api/v1/util/twistcli > twistcli; chmod a+x twistcli;
 
 ## Scans the prisma-rabbitmq docker container
-./twistcli images scan --details --address https://us-east1.cloud.twistlock.com/us-1-111573457 --token [__prisma-accesstoken__] youracr.azurecr.io/rabbitmq-prisma:prisma
+./twistcli images scan --details --address __prisma-consoleurl__ --token __prisma-accesstoken__ youracr.azurecr.io/rabbitmq-prisma:prisma
 
 ```
 ## Two example pipeline approaches for ADO
