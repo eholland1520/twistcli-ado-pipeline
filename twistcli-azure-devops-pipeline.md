@@ -37,7 +37,7 @@ curl --progress-bar -L -k --header "authorization: Bearer [__prisma-accesstoken_
 ./twistcli images scan --details --address https://us-east1.cloud.twistlock.com/us-1-111573457 --token [__prisma-accesstoken__] youracr.azurecr.io/rabbitmq-prisma:prisma
 
 ```
-#### Two example pipeline approaches for ADO
+## Two example pipeline approaches for ADO
 * Graphical Editor - Use the classic graphical editor to build your pipeline in the web browser.
 * Yaml - Create a yaml file that can be stored along with other source code files for the project.
 
