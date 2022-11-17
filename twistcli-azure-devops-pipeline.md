@@ -1,11 +1,11 @@
 ## TwistCLI Integration into Azure DevOps Pipeline
 The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into and Azure DevOps pipeline using either the classic graphical editor in ADO or via YAML pipeline template.
 
-#### Pre-requisites
+### Pre-requisites
 1. Create Access Keys
 2. Create JWT
 
-### Create Access Keys
+#### Create Access Keys
 Settings --> Access Control --> Access keys --> Click "Add" button and select "Access Key"
 
 ![prisma-cloud-access-key-create](prisma-cloud-access-key-create.png)
@@ -13,7 +13,7 @@ Settings --> Access Control --> Access keys --> Click "Add" button and select "A
 ![prisma-cloud-access-key-credentials.png](prisma-cloud-access-key-credentials.png)
 Save the password in a secure place like Azure Keyvault for retrieval during the Azure DevOps pipeline
 
-### Create a JWT 
+## Create a JWT 
 [Detailed instructions can be found here](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
 ```
 curl -X POST \
