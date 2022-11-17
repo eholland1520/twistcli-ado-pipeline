@@ -59,6 +59,9 @@ The build pipeline can either be executed from the classic web based editor or v
 * Graphical Editor - Use the classic graphical editor to build your pipeline in the web browser.
 * Yaml - Create a yaml file that can be stored along with other source code files for the project.
 
+#### Classic Editor Pipeline
+![azure-devops-pipeline-prisma-scan-image](azure-devops-pipeline-prisma-scan-image.png)
+
 #### YAML Pipeline
 ```
 # Variable Group 'prismacloud' was defined in the Variables tab
