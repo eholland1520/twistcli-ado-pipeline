@@ -1,7 +1,3 @@
-# prismacloud-docs
-Helpful documentation for Prisma Cloud Customers
-
-
 ## TwistCLI Integration into Azure DevOps Pipeline
 The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into and Azure DevOps pipeline using either the classic graphical editor in ADO or via YAML pipeline template.
 
