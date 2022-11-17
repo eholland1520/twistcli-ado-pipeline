@@ -1,7 +1,7 @@
 ## TwistCLI Integration into Azure DevOps Pipeline
 The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into and Azure DevOps pipeline using either the classic graphical editor in ADO or via YAML pipeline template.
 
-### Pre-requisites
+#### Pre-requisites
 1. Create Access Keys
 2. Create JWT
 
@@ -13,7 +13,7 @@ Settings --> Access Control --> Access keys --> Click "Add" button and select "A
 ![prisma-cloud-access-key-credentials.png](prisma-cloud-access-key-credentials.png)
 Save the password in a secure place like Azure Keyvault for retrieval during the Azure DevOps pipeline
 
-## Create a JWT 
+#### Create a JWT 
 [Detailed instructions can be found here](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
 ```
 curl -X POST \
@@ -37,7 +37,7 @@ The command above outputs a JWT that can be used for authenticating to the Prism
 
 **Note**: In a production scenario step 2 can be eliminated by installing the twistcli binary on Azure self-hosted build agents ensuring that all developers have access to image scanning capabilities for their individual pipelines.
 
-#### Buile Pipeline Steps
+## Buile Pipeline Steps
 1. Retrieve access token and console url from Azure Key Vault
 2. Use access key to download and install the TwistCLI binary
 3. Build a docker image
@@ -47,11 +47,10 @@ The command above outputs a JWT that can be used for authenticating to the Prism
 #### TwistCLI Command Line
 The Azure DevOps pipeline executes the following command
 ```
-## Example pipeline approaches for ADO
-Downloads the twistcli binary from the console
+#vDownload the twistcli binary from the console
 curl --progress-bar -L -k --header "authorization: Bearer __prisma-accesstoken__" __prisma-consoleurl__/api/v1/util/twistcli > twistcli; chmod a+x twistcli;
 
-### Scan the prisma-rabbitmq docker container
+# Scan the prisma-rabbitmq docker container
 ./twistcli images scan --details --address __prisma-consoleurl__ --token __prisma-accesstoken__ youracr.azurecr.io/rabbitmq-prisma:prisma
 ```
 
