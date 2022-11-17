@@ -37,11 +37,11 @@ curl --progress-bar -L -k --header "authorization: Bearer __prisma-accesstoken__
 ./twistcli images scan --details --address __prisma-consoleurl__ --token __prisma-accesstoken__ youracr.azurecr.io/rabbitmq-prisma:prisma
 
 ```
-## Two example pipeline approaches for ADO
+## Example pipeline approaches for ADO
 * Graphical Editor - Use the classic graphical editor to build your pipeline in the web browser.
 * Yaml - Create a yaml file that can be stored along with other source code files for the project.
 
-#### YAML Pipeline Example
+#### YAML Pipeline
 ```
 # Variable Group 'prismacloud' was defined in the Variables tab
 resources:
