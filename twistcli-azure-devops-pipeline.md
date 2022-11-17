@@ -28,6 +28,9 @@ curl -X POST \
 
 **Note**: In a production scenario step 2 can be eliminated by installing the twistcli binary on Azure self-hosted build agents ensuring that all developers have access to image scanning capabilities for their individual pipelines.
 
+```
+## Example pipeline approaches for ADO
+
 ### TwistCLI Command Line
 The Azure DevOps pipeline executes the following command
 ```
@@ -37,8 +40,6 @@ curl --progress-bar -L -k --header "authorization: Bearer __prisma-accesstoken__
 ## Scans the prisma-rabbitmq docker container
 ./twistcli images scan --details --address __prisma-consoleurl__ --token __prisma-accesstoken__ youracr.azurecr.io/rabbitmq-prisma:prisma
 
-```
-## Example pipeline approaches for ADO
 * Graphical Editor - Use the classic graphical editor to build your pipeline in the web browser.
 * Yaml - Create a yaml file that can be stored along with other source code files for the project.
 
