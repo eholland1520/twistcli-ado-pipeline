@@ -17,7 +17,7 @@ The following document is provided as high level example of how to integrate Pri
 5. If the image passes the previous step (5), push the image to ACR
 
 ### Get a JWT 
-[Get a JWT](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
+[Detailed instructions can be found here](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
 ```
 curl -X POST \
             https://api.prismacloud.io/login \
