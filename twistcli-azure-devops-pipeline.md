@@ -5,7 +5,7 @@ The following document is provided as high level example of how to integrate Pri
 1. Create a Prisma Cloud Service Account with a DevOps role in Prisma Cloud Compute.
 2. Install the Prisma Compute plugin in your Azure DevOps Organization.
 3. Build an Azure DevOps pipeline to scan a docker image for vulnerabilities with TwistCli.
-5. View the vulnerability report produced by the TwistCli image scan.
+4. View the vulnerability report produced by the TwistCli image scan.
 
 ## 1. Create Prisma Cloud Service Account
 Settings --> Access Control --> User --> Click "Add" button and select "Service Account". Provide a name for the service account and select "DevOps-role" to enable scanning permissions for the service account.
@@ -44,9 +44,9 @@ https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-ta
 3. If the image passes the previous, push the image to ACR
 
 Steps 4 through 6 demonstrate the same as above utilizing Azure CLI instead of the plugin.
-5. Retrieve access token and console url from Azure Key Vault
-6. Use access key to download and install the TwistCLI binary from the Prisma Cloud console
-7. Scan a docker image using TwistCLI and AzureCLI (Pass/Fail)
+1. Retrieve access token and console url from Azure Key Vault
+2. Use access key to download and install the TwistCLI binary from the Prisma Cloud console
+3. Scan a docker image using TwistCLI and AzureCLI (Pass/Fail)
 
 **Note**: In a production scenario step 2 can be eliminated by installing the twistcli binary on Azure self-hosted build agents ensuring that all developers have access to image scanning capabilities for their individual pipelines.
 
