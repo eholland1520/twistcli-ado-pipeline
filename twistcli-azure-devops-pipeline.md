@@ -44,9 +44,9 @@ https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-ta
 3. If the image passes the previous, push the image to ACR
 
 Steps 4 through 6 demonstrate the same as above utilizing Azure CLI instead of the plugin.
-1. Retrieve access token and console url from Azure Key Vault
-2. Use access key to download and install the TwistCLI binary from the Prisma Cloud console
-3. Scan a docker image using TwistCLI and AzureCLI (Pass/Fail)
+4. Retrieve access token and console url from Azure Key Vault
+5. Use access key to download and install the TwistCLI binary from the Prisma Cloud console
+5. Scan a docker image using TwistCLI and AzureCLI (Pass/Fail)
 
 **Note**: In a production scenario step 2 can be eliminated by installing the twistcli binary on Azure self-hosted build agents ensuring that all developers have access to image scanning capabilities for their individual pipelines.
 
