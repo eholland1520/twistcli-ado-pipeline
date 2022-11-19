@@ -90,6 +90,25 @@ jobs:
   steps:
   - checkout: self
     fetchDepth: 1
+  - task: Docker@2
+    displayName: Create RabbitMQ Image
+    inputs:
+      containerRegistry: xxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx
+      repository: rabbitmq-prisma
+      command: build
+      tags: prisma
+  - task: prisma-cloud-compute-scan@3
+    displayName: Prisma Cloud Compute Scan
+    inputs:
+      twistlockService: b9b7e07b-50de-4eb8-a8a7-e0befc98c57e
+      artifact: youracrgoeshere.azurecr.io/rabbitmq-prisma:prisma
+  - task: Docker@2
+    displayName: Push RabbitMQ Image to ACR
+    inputs:
+      containerRegistry: xxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx
+      repository: rabbitmq-prisma
+      command: push
+      tags: prisma
   - task: replacetokens@5
     displayName: Get Prisma Cloud Secrets From Azure KeyVault
     inputs:
@@ -102,31 +121,20 @@ jobs:
     inputs:
       connectedServiceNameARM: yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
       scriptType: bash
+      scriptLocation: inlineScript
       scriptPath: scripts/install-twistcli.sh
-      inlineScript: 'curl --progress-bar -L -k --header "authorization: Bearer [__prisma-accesstoken__]" [__prisma-consoleurl__]/api/v1/util/twistcli > twistcli; chmod a+x twistcli;'
-  - task: Docker@2
-    displayName: Create RabbitMQ Image
-    inputs:
-      containerRegistry: xxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx
-      repository: rabbitmq-prisma
-      command: build
-      tags: prisma
+      inlineScript: >-
+        curl -k -O -u [access key id]:[secret access key] [console url]/api/v1/util/twistcli;
+        chmod a+x twistcli;
   - task: AzureCLI@2
     displayName: Scan RabbitMQ Image
     inputs:
       connectedServiceNameARM: yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
       scriptType: bash
+      scriptLocation: inlineScript
       scriptPath: scripts/scan-image.sh
-      inlineScript: ./twistcli images scan --details --address https://us-east1.cloud.twistlock.com/us-1-111573457 --token [__prisma-accesstoken__] youracr.azurecr.io/rabbitmq-prisma:prisma
-      scriptArguments: __prisma-consoleurl__
+      inlineScript: ./twistcli images scan --details --address [console url] -u [access key id]:[secret access key] myacr.azurecr.io/rabbitmq-prisma:prisma
       failOnStandardError: true
-  - task: Docker@2
-    displayName: Push RabbitMQ Image to ACR
-    inputs:
-      containerRegistry: xxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx
-      repository: rabbitmq-prisma
-      command: push
-      tags: prisma
 ```
 ## 4. View TwistCLI Image Scanner Report
 **Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
