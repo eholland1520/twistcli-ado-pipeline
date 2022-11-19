@@ -9,7 +9,7 @@ The following document is provided as high level example of how to integrate Pri
 
 ## 1. Create Prisma Cloud Service Account
 Settings --> Access Control --> User --> Click "Add" button and select "Service Account". Provide a name for the service account and select "DevOps-role" to enable scanning permissions for the service account.
-<img src="images/prisma-cloud-service-account-devops-role.png" width="150">
+<img src="images/prisma-cloud-service-account-devops-role.png" width="45%">
 
 After creating the service account you will be prompted to create an access key for the service account. Provide a name for the service account and click "Next".
 ![prisma-cloud-access-key-details](images/prisma-cloud-access-key-details.png)
