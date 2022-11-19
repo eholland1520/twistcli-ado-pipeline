@@ -64,7 +64,9 @@ The build pipeline can either be executed from the classic web based editor or v
 * Yaml - Create a yaml file that can be stored along with other source code files for the project.
 
 #### Classic Editor Pipeline
-![azure-devops-pipeline-editor](azure-devops-pipeline-editor.png)
+<p align="center">
+<img src="images/prisma-cloud-azure-devops-pipeline-twistcli.png" width="55%">
+</p>
 
 #### YAML Pipeline
 ```
@@ -122,4 +124,6 @@ jobs:
 ```
 4. ## TwistCLI Image Scanner Report
 **Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
-![TwistCLI Scanner Report](twistcli-scanner-report.png)
+<p align="center">
+<img src="images/prisma-cloud-ado-pipeline-twistcli-keyvault-azurecli.png" width="55%">
+</p>
