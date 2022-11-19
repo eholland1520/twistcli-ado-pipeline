@@ -9,13 +9,13 @@ The following document is provided as high level example of how to integrate Pri
 
 ## 1. Create Prisma Cloud Service Account
 Settings --> Access Control --> User --> Click "Add" button and select "Service Account". Provide a name for the service account and select "DevOps-role" to enable scanning permissions for the service account.
-<img src="images/prisma-cloud-service-account-devops-role.png" width="45%">
+<img src="images/prisma-cloud-service-account-devops-role.png" width="55%">
 
 After creating the service account you will be prompted to create an access key for the service account. Provide a name for the service account and click "Next".
-<img src="images/prisma-cloud-access-key-details.png width=45%">
+<img src="images/prisma-cloud-access-key-details.png" width="55%">
 
 After the access key has been created you are give the access key ID and the access key secret token. These values are the user and password that you will need when authenticating to the consolfe from your Azure DevOps pipeline. Be sure to save these values in a secure place (Azure Keyvault).
-<img src="images/prisma-cloud-access-key-results.png">
+<img src="images/prisma-cloud-access-key-results.png" "width=55%">
 
 Now that you have a service account user and a user/password for authentication you can move on to Azure DevOps.
 
