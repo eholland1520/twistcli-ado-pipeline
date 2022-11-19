@@ -16,28 +16,8 @@ Settings --> Access Control --> UserAccess keys --> Click "Add" button and selec
 Save the password in a secure place like Azure Keyvault for retrieval during the Azure DevOps pipeline
 
 ## 2. Install the Prisma Compute plugin
-
-#### Appendix: Create a JWT
-[Detailed instructions can be found here](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
-```
-curl -X POST \
-            https://api.prismacloud.io/login \
-            -H 'Content-Type: application/json' \
-            -d '{"username":"Access-Key","password":"Secret-key"}'
-```
-The command above outputs a JWT that can be used for authenticating to the Prisma Cloud API when downloading the twistcli binary and accessing image scans.
-```
-{
-           "token": "<JWT>",
-           "message": "login_successful",
-           "customerNames": [
-           {
-          "customerName": "Test",
-          "tosAccepted": true
-          }
-         ]
-        }
-```
+The Prisma Compute plugin is available from the Azure Marketplace:
+https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-task
 
 ## 3. Build an Azure Devops Pipeline with TwistCli image scanning
 1. Retrieve access token and console url from Azure Key Vault
