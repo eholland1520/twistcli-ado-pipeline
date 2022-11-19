@@ -20,7 +20,7 @@ After creating the service account you will be prompted to create an access key 
 
 After the access key has been created you are give the access key ID and the access key secret token. These values are the user and password that you will need when authenticating to the consolfe from your Azure DevOps pipeline. Be sure to save these values in a secure place (Azure Keyvault).
 <p align="center">
-  <img src="images/prisma-cloud-access-key-results.png" "width=55%">
+<img src="images/prisma-cloud-access-key-results.png" width="55%">
 </p>
 
 Now that you have a service account user and a user/password for authentication you can move on to Azure DevOps.
