@@ -26,6 +26,14 @@ After the access key has been created you are give the access key ID and the acc
 Now that you have a service account user and a user/password for authentication you can move on to Azure DevOps.
 
 ## 2. Install the Prisma Compute plugin
+This extension enables Prisma Cloud container image / serverless zip scan functionality from Palo Alto Networks Inc. in Azure DevOps.
+
+Features:
+*Scan container images
+*Scan serverless zip files in pipelines
+*Define severity based failure criteria for pipelines
+*Setup service connection to Prisma Cloud Compute Console
+
 The Prisma Compute plugin is available from the Azure Marketplace:
 https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-task
 
