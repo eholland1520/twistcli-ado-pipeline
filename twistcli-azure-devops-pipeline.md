@@ -24,6 +24,9 @@ After the access key has been created you are give the access key ID and the acc
 </p>
 
 Now that you have a service account user and a user/password for authentication you can move on to Azure DevOps.
+<p align="center">
+<img src="images/prisma-cloud-access-control-service-account.png" width="55%">
+</p>
 
 ## 2. Install the Prisma Compute plugin
 This extension enables Prisma Cloud container image / serverless zip scan functionality from Palo Alto Networks Inc. in Azure DevOps.
