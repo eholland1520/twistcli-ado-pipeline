@@ -1,14 +1,13 @@
-## TwistCLI Integration into Azure DevOps Pipeline
+# TwistCLI Integration into Azure DevOps Pipeline
 The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into and Azure DevOps pipeline using either the classic graphical editor in ADO or via YAML pipeline template.
 
-#### Pre-requisites
+#### Steps 
 1. Create a Service Account with a DevOps role in Prisma Cloud Compute.
-2. Assign Devops Role to the service account in the Build and Deploy Permissions Group.
-3. An Azure DevOps organization with the Prisma Compute plugin installed.
+2. Install the Prisma Compute plugin in your DevOps Organization.
 4. Build an Azure DevOps pipeline to scan a docker image for vulnerabilities.
-5. View the vulnerability report
+5. View the vulnerability report produced by the TwistCli image scan.
 
-#### 1. Create Access Service Account
+## 1. Create Access Service Account
 Settings --> Access Control --> UserAccess keys --> Click "Add" button and select "Access Key"
 
 ![prisma-cloud-access-key-create](prisma-cloud-access-key-create.png)
@@ -16,9 +15,9 @@ Settings --> Access Control --> UserAccess keys --> Click "Add" button and selec
 ![prisma-cloud-access-key-credentials.png](prisma-cloud-access-key-credentials.png)
 Save the password in a secure place like Azure Keyvault for retrieval during the Azure DevOps pipeline
 
-#### 2. Assign DevOps role 
+## 2. Assign DevOps role 
 
-#### 3. Install the Prisma Compute plugin
+## 3. Install the Prisma Compute plugin
 
 #### Appendix: Create a JWT
 [Detailed instructions can be found here](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
@@ -42,7 +41,7 @@ The command above outputs a JWT that can be used for authenticating to the Prism
         }
 ```
 
-## Build Pipeline Steps
+## 4. Build an Azure Devops Pipeline with TwistCli image scanning
 1. Retrieve access token and console url from Azure Key Vault
 2. Use access key to download and install the TwistCLI binary
 3. Build a docker image
@@ -125,6 +124,6 @@ jobs:
       command: push
       tags: prisma
 ```
-#### Image Scanner Report
+5. ## TwistCLI Image Scanner Report
 **Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
 ![TwistCLI Scanner Report](twistcli-scanner-report.png)
