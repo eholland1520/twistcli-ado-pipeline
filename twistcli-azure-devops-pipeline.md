@@ -2,18 +2,25 @@
 The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into and Azure DevOps pipeline using either the classic graphical editor in ADO or via YAML pipeline template.
 
 #### Pre-requisites
-1. Create Access Keys
-2. Create JWT
+1. Create a Service Account with a DevOps role in Prisma Cloud Compute.
+2. Assign Devops Role to the service account in the Build and Deploy Permissions Group.
+3. An Azure DevOps organization with the Prisma Compute plugin installed.
+4. Build an Azure DevOps pipeline to scan a docker image for vulnerabilities.
+5. View the vulnerability report
 
-#### Create Access Keys
-Settings --> Access Control --> Access keys --> Click "Add" button and select "Access Key"
+#### 1. Create Access Service Account
+Settings --> Access Control --> UserAccess keys --> Click "Add" button and select "Access Key"
 
 ![prisma-cloud-access-key-create](prisma-cloud-access-key-create.png)
 
 ![prisma-cloud-access-key-credentials.png](prisma-cloud-access-key-credentials.png)
 Save the password in a secure place like Azure Keyvault for retrieval during the Azure DevOps pipeline
 
-#### Create a JWT 
+#### 2. Assign DevOps role 
+
+#### 3. Install the Prisma Compute plugin
+
+#### Appendix: Create a JWT
 [Detailed instructions can be found here](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA14u0000004MQyCAM&lang=en_US%E2%80%A9&refURL=http%3A%2F%2Fknowledgebase.paloaltonetworks.com%2FKCSArticleDetail)
 ```
 curl -X POST \
@@ -46,6 +53,8 @@ The command above outputs a JWT that can be used for authenticating to the Prism
 
 #### TwistCLI Command Line
 The Azure DevOps pipeline executes the following twistcli commands during build pipeline execution.
+
+Reference: https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images
 
 ```
 #vDownload the twistcli binary from the console (Task: Install TwistCLI)
