@@ -39,21 +39,19 @@ https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-ta
 
 
 ## 3. Build an Azure Devops Pipeline with TwistCli image scanning
+Now that you have a service account in Prisma Cloud with the DevOps role and the Prisma Compute plugin installed into your organization your are ready to start utilizing TwistCLI from your Azure DevOps pipelines. The example pipeline consists of the following tasks/steps:
+
 1. Build a docker image
 2. Scan a docker image using TwistCLI plugin from Azure Marketplace (Pass/Fail)
 3. If the image passes the previous, push the image to ACR
 
-Steps 4 through 6 demonstrate the same as above utilizing Azure CLI instead of the plugin.
-4. Retrieve access token and console url from Azure Key Vault
-5. Use access key to download and install the TwistCLI binary from the Prisma Cloud console
-5. Scan a docker image using TwistCLI and AzureCLI (Pass/Fail)
-
-**Note**: In a production scenario step 2 can be eliminated by installing the twistcli binary on Azure self-hosted build agents ensuring that all developers have access to image scanning capabilities for their individual pipelines.
+The next 3 steps in the pipeline demonstrate the same as above utilizing Azure CLI instead of the plugin.
+1. Retrieve access token and console url from Azure Key Vault
+2. Use access key to download and install the TwistCLI binary from the Prisma Cloud console
+3. Scan a docker image using TwistCLI and AzureCLI (Pass/Fail)
 
 #### TwistCLI Command Line
 The Azure DevOps pipeline executes the following twistcli commands during build pipeline execution.
-
-Reference: https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images
 
 ```
 #vDownload the twistcli binary from the console (Task: Install TwistCLI)
@@ -126,7 +124,7 @@ jobs:
       command: push
       tags: prisma
 ```
-## 4. TwistCLI Image Scanner Report
+## 4. View TwistCLI Image Scanner Report
 **Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
 <p align="center">
 <img src="images/prisma-cloud-ado-pipeline-twistcli-keyvault-azurecli.png" width="55%">
