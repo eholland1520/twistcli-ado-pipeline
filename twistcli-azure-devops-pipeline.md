@@ -59,7 +59,7 @@ curl -k -O -u [access token id]:[secret token] [console url]/api/v1/util/twistcl
 chmod a+x twistcli;
 
 # Scan the prisma-rabbitmq docker container (Task: Scan RabbitMQ Image)
-./twistcli images scan --details --address __prisma-consoleurl__ --token __prisma-accesstoken__ youracr.azurecr.io/rabbitmq-prisma:prisma
+./twistcli images scan --details --address [console url] -u [access token id]:[secret token] myacr.azurecr.io/rabbitmq-prisma:prisma
 ```
 
 The build pipeline can either be executed from the classic web based editor or via yaml template.
