@@ -55,7 +55,8 @@ The Azure DevOps pipeline executes the following twistcli commands during build 
 
 ```
 #vDownload the twistcli binary from the console (Task: Install TwistCLI)
-curl --progress-bar -L -k --header "authorization: Bearer __prisma-accesstoken__" __prisma-consoleurl__/api/v1/util/twistcli > twistcli; chmod a+x twistcli;
+curl -k -O -u [access token id]:[secret token] [console url]/api/v1/util/twistcli;
+chmod a+x twistcli;
 
 # Scan the prisma-rabbitmq docker container (Task: Scan RabbitMQ Image)
 ./twistcli images scan --details --address __prisma-consoleurl__ --token __prisma-accesstoken__ youracr.azurecr.io/rabbitmq-prisma:prisma
