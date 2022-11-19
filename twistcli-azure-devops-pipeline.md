@@ -149,11 +149,7 @@ jobs:
 <img src="images/prisma-cloud-ado-pipeline-twistcli-keyvault-azurecli.png" width="85%">
 </p>
 
-The results can also be viewed from the Prisma Cloud console from Compute --> Monitor --> Vulnerabilites --> Images --> CI
-<p align="center">
-<img src="images/prisma-cloud-image-vulnerability-scan-results-console.png" width="85%">
-</p>
-
+Detailed results from the image scan can also be viewed from the Prisma Cloud console by navigating to Compute --> Monitor --> Vulnerabilites --> Images --> CI
 
 The Prisma Cloud Console lets you drill down into the details of the image scan. The example belows shows the 'Layers' tab in 'Image Details'.
 <p align="center">
