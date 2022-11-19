@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: queue-ilb
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+spec:
+  selector:
+    app: queue
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 15672

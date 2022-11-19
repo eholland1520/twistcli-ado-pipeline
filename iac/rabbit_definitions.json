@@ -1,0 +1,138 @@
+{
+  "rabbit_version": "3.6.6",
+  "users": [{
+    "name": "queue_worker",
+    "password_hash": "lLkhHzCM17Z6gopoLX1aft9kxJias8j5c0PuogJ6fd7MN/Ma",
+    "hashing_algorithm": "rabbit_password_hashing_sha256",
+    "tags": ""
+  }, {
+    "name": "k8s_listener",
+    "password_hash": "rKg7KPXXaA9r0u4LouBjcK+mEBpncqNQe74UuCtMY5/UKFrP",
+    "hashing_algorithm": "rabbit_password_hashing_sha256",
+    "tags": ""
+  }, {
+      "name": "scheduler",
+      "password_hash": "yz6dovEILURoJwxdJRmur3daEl1KvGdI0d69uvARHE8xmr/v",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": ""
+  }, {
+    "name": "admin",
+    "password_hash": "xbsjFx8ab1mobLNHo6A7TbM97sczdY/nIAkIr8ngso0ZiCU+",
+    "hashing_algorithm": "rabbit_password_hashing_sha256",
+    "tags": "administrator"
+  }],
+  "vhosts": [{
+    "name": "/"
+  }],
+  "permissions": [{
+    "user": "admin",
+    "vhost": "/",
+    "configure": ".*",
+    "write": ".*",
+    "read": ".*"
+  }, {
+    "user": "queue_worker",
+    "vhost": "/",
+    "configure": ".*",
+    "write": ".*",
+    "read": ".*"
+  }, {
+    "user": "scheduler",
+    "vhost": "/",
+    "configure": ".*",
+    "write": ".*",
+    "read": ".*"
+  }, {
+    "user": "k8s_listener",
+    "vhost": "/",
+    "configure": ".*",
+    "write": ".*",
+    "read": ".*"
+  }],
+  "parameters": [],
+  "policies": [],
+  "queues": [{
+    "name": "events",
+    "vhost": "/",
+    "durable": true,
+    "exclusive": false,
+    "auto_delete": false,
+    "arguments": {
+      "x-dead-letter-exchange": "dlx.events"
+    }
+  },{
+    "name": "retry.events",
+    "vhost": "/",
+    "durable": true,
+    "auto_delete": false,
+    "arguments": {
+      "x-message-ttl": 30000,
+      "x-dead-letter-exchange": "exchange.events"
+    }
+  }, {
+    "name": "retry.staging",
+    "vhost": "/",
+    "durable": true,
+    "auto_delete": false,
+    "arguments": {
+      "x-message-ttl": 30000,
+      "x-dead-letter-exchange": "exchange.staging"
+    }
+
+  }],
+  "exchanges": [{
+    "name": "exchange.staging",
+    "vhost": "/",
+    "type": "fanout",
+    "durable": true,
+    "auto_delete": false,
+    "internal": false,
+    "arguments": {}
+  }, {
+    "name": "exchange.events",
+    "vhost": "/",
+    "type": "fanout",
+    "durable": true,
+    "auto_delete": false,
+    "internal": false,
+    "arguments": {}
+  }, {
+    "name": "dlx.staging",
+    "vhost": "/",
+    "type": "fanout",
+    "durable": true,
+    "auto_delete": false,
+    "internal": false,
+    "arguments": {}
+  }, {
+    "name": "dlx.events",
+    "vhost": "/",
+    "type": "fanout",
+    "durable": true,
+    "auto_delete": false,
+    "internal": false,
+    "arguments": {}
+  }],
+  "bindings": [{
+    "source": "dlx.staging",
+    "vhost": "/",
+    "destination": "retry.events",
+    "destination_type": "queue",
+    "routing_key": "",
+    "arguments": {}
+  }, {
+    "source": "dlx.events",
+    "vhost": "/",
+    "destination": "retry.events",
+    "destination_type": "queue",
+    "routing_key": "",
+    "arguments": {}
+  }, {
+    "source": "exchange.events",
+    "vhost": "/",
+    "destination": "events",
+    "destination_type": "queue",
+    "routing_key": "",
+    "arguments": {}
+  }]
+}

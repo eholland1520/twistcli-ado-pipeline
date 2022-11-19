@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: queue
+spec:
+  type: ClusterIP
+  selector:
+    app: queue
+  ports:
+  - name: http
+    protocol: TCP
+    port: 15672
+    targetPort: 15672
+  - name: rabbitmq
+    protocol: TCP
+    port: 5672
+    targetPort: 5672
