@@ -37,6 +37,7 @@ Features:
 The Prisma Compute plugin is available from the Azure Marketplace:
 https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-task
 
+
 ## 3. Build an Azure Devops Pipeline with TwistCli image scanning
 1. Retrieve access token and console url from Azure Key Vault
 2. Use access key to download and install the TwistCLI binary
