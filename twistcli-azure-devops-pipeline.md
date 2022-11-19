@@ -37,15 +37,15 @@ Features:
 * Define severity based failure criteria for pipelines
 * Setup service connection to Prisma Cloud Compute Console
 
+The Prisma Compute plugin is available from the Azure Marketplace:
+https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-task
+
 A service connection is created during the isntallation of the the plugin into your Azure DevOps organization. You will have to provide the console url, access key id and the secret access key during the installation process.
 
 Azure DevOps Service Connection to the Prsima Cloud Compute console
 <p align="center">
 <img src="images/prisma-cloud-azure-devops-service-connection.png" width="85%">
 </p>
-
-The Prisma Compute plugin is available from the Azure Marketplace:
-https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-task
 
 
 ## 3. Build an Azure Devops Pipeline with TwistCli image scanning
@@ -148,3 +148,16 @@ jobs:
 <p align="center">
 <img src="images/prisma-cloud-ado-pipeline-twistcli-keyvault-azurecli.png" width="85%">
 </p>
+
+The results can also be viewed from the Prisma Cloud console from Compute --> Monitor --> Vulnerabilites --> Images --> CI
+<p align="center">
+<img src="images/prisma-cloud-image-vulnerability-scan-results-console.png" width="85%">
+</p>
+
+
+The Prisma Cloud Console lets you drill down into the details of the image scan. The example belows shows the 'Layers' tab in 'Image Details'.
+<p align="center">
+<img src="images/prisma-cloud-image-scan-detals-docker-layers.png" width="85%">
+</p>
+
+
