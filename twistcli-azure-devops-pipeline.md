@@ -37,6 +37,13 @@ Features:
 * Define severity based failure criteria for pipelines
 * Setup service connection to Prisma Cloud Compute Console
 
+A service connection is created during the isntallation of the the plugin into your Azure DevOps organization. You will have to provide the console url, access key id and the secret access key during the installation process.
+
+Azure DevOps Service Connection to the Prsima Cloud Compute console
+<p align="center">
+<img src="images/prisma-cloud-azure-devops-service-connection.png" width="85%">
+</p>
+
 The Prisma Compute plugin is available from the Azure Marketplace:
 https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-task
 
