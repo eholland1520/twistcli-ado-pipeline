@@ -39,11 +39,14 @@ https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-ta
 
 
 ## 3. Build an Azure Devops Pipeline with TwistCli image scanning
-1. Retrieve access token and console url from Azure Key Vault
-2. Use access key to download and install the TwistCLI binary
-3. Build a docker image
-4. Scan a docker image using TwistCLI (Pass/Fail)
-5. If the image passes the previous step (5), push the image to ACR
+1. Build a docker image
+2. Scan a docker image using TwistCLI plugin from Azure Marketplace (Pass/Fail)
+3. If the image passes the previous, push the image to ACR
+
+Steps 4 through 6 demonstrate the same as above utilizing Azure CLI instead of the plugin.
+5. Retrieve access token and console url from Azure Key Vault
+6. Use access key to download and install the TwistCLI binary from the Prisma Cloud console
+7. Scan a docker image using TwistCLI and AzureCLI (Pass/Fail)
 
 **Note**: In a production scenario step 2 can be eliminated by installing the twistcli binary on Azure self-hosted build agents ensuring that all developers have access to image scanning capabilities for their individual pipelines.
 
