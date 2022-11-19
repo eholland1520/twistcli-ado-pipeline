@@ -71,7 +71,7 @@ The build pipeline can either be executed from the classic web based editor or v
 
 #### Classic Editor Pipeline
 <p align="center">
-<img src="images/prisma-cloud-azure-devops-pipeline-twistcli.png" width="75%">
+<img src="images/prisma-cloud-azure-devops-pipeline-twistcli.png" width="85%">
 </p>
 
 #### YAML Pipeline
@@ -139,5 +139,5 @@ jobs:
 ## 4. View TwistCLI Image Scanner Report
 **Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
 <p align="center">
-<img src="images/prisma-cloud-ado-pipeline-twistcli-keyvault-azurecli.png" width="75%">
+<img src="images/prisma-cloud-ado-pipeline-twistcli-keyvault-azurecli.png" width="85%">
 </p>
