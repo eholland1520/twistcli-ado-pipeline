@@ -2,18 +2,22 @@
 The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into and Azure DevOps pipeline using either the classic graphical editor in ADO or via YAML pipeline template.
 
 #### Steps 
-1. Create a Service Account with a DevOps role in Prisma Cloud Compute.
-2. Install the Prisma Compute plugin in your DevOps Organization.
-3. Build an Azure DevOps pipeline to scan a docker image for vulnerabilities.
+1. Create a Prisma Cloud Service Account with a DevOps role in Prisma Cloud Compute.
+2. Install the Prisma Compute plugin in your Azure DevOps Organization.
+3. Build an Azure DevOps pipeline to scan a docker image for vulnerabilities with TwistCli.
 5. View the vulnerability report produced by the TwistCli image scan.
 
-## 1. Create Access Service Account
-Settings --> Access Control --> UserAccess keys --> Click "Add" button and select "Access Key"
+## 1. Create Prisma Cloud Service Account
+Settings --> Access Control --> User --> Click "Add" button and select "Service Account". Provide a name for the service account and select "DevOps-role" to enable scanning permissions for the service account.
+![prisma-cloud-service-account-devops-role](images/prisma-cloud-service-account-devops-role.png)
 
-![prisma-cloud-access-key-create](prisma-cloud-access-key-create.png)
+After creating the service account you will be prompted to create an access key for the service account. Provide a name for the service account and click "Next".
+![prisma-cloud-access-key-details](images/prisma-cloud-access-key-details.png)
 
-![prisma-cloud-access-key-credentials.png](prisma-cloud-access-key-credentials.png)
-Save the password in a secure place like Azure Keyvault for retrieval during the Azure DevOps pipeline
+After the access key has been created you are give the access key ID and the access key secret token. These values are the user and password that you will need when authenticating to the consolfe from your Azure DevOps pipeline. Be sure to save these values in a secure place (Azure Keyvault).
+![prisma-cloud-access-key-results](images/prisma-cloud-access-key-results.png)
+
+Now that you have a service account user and a user/password for authentication you can move on to Azure DevOps.
 
 ## 2. Install the Prisma Compute plugin
 The Prisma Compute plugin is available from the Azure Marketplace:
