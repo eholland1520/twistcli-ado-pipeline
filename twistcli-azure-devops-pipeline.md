@@ -122,7 +122,7 @@ jobs:
       command: push
       tags: prisma
 ```
-4. ## TwistCLI Image Scanner Report
+## 4. TwistCLI Image Scanner Report
 **Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
 <p align="center">
 <img src="images/prisma-cloud-ado-pipeline-twistcli-keyvault-azurecli.png" width="55%">
