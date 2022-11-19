@@ -25,7 +25,7 @@ After the access key has been created you are give the access key ID and the acc
 
 Now that you have a service account user and a user/password for authentication you can move on to Azure DevOps.
 <p align="center">
-<img src="images/prisma-cloud-access-control-service-account.png" width="55%">
+<img src="images/prisma-cloud-access-control-service-account.png" width="85%">
 </p>
 
 ## 2. Install the Prisma Compute plugin
