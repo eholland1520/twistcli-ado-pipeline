@@ -1,19 +1,23 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') { 
+        stage('Install TwistCLI') { 
             steps {
-                echo 'hello build' 
+                echo 'Install TwistCLI' 
+                curl -k -O -u [USER:PASSWORD] [PRISMACONSOLEURL];
+                chmod a+x twistcli;
             }
         }
         stage('Test') { 
             steps {
-                echo 'hello test'  
+                echo 'Prisma Image Vulnerability Scan'
+                sudo ./twistcli images scan --details --address [PRISMACONSOLEURL] --u [USER] -p [PASSWORD] prismaclouddev.jfrog.io/prismaclouddev-docker-local/rabbitmq:latest
             }
         }
         stage('Deploy') { 
             steps {
-                echo 'hello deploy'  
+                echo 'Prisma Image Analysis Sandbox'  
+                sudo ./twistcli sandbox --analysis-duration 15s --address [PRISMACONSOLEURL] --u [USER] -p [PASSWORD] prismaclouddev.jfrog.io/prismaclouddev-docker-local/rabbitmq:latest
             }
         }
     }
