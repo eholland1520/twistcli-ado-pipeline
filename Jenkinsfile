@@ -11,13 +11,13 @@ pipeline {
         stage('Test') { 
             steps {
                 echo 'Prisma Image Vulnerability Scan'
-                sudo ./twistcli images scan --details --address [PRISMACONSOLEURL] --u [USER] -p [PASSWORD] prismaclouddev.jfrog.io/prismaclouddev-docker-local/rabbitmq:latest
+                sudo ./twistcli images scan --details --address [PRISMACONSOLEURL] --u [USER] -p [PASSWORD] 'prismaclouddev.jfrog.io/prismaclouddev-docker-local/rabbitmq:latest'
             }
         }
         stage('Deploy') { 
             steps {
                 echo 'Prisma Image Analysis Sandbox'  
-                sudo ./twistcli sandbox --analysis-duration 15s --address [PRISMACONSOLEURL] --u [USER] -p [PASSWORD] prismaclouddev.jfrog.io/prismaclouddev-docker-local/rabbitmq:latest
+                sudo ./twistcli sandbox --analysis-duration 15s --address [PRISMACONSOLEURL] --u [USER] -p [PASSWORD] 'prismaclouddev.jfrog.io/prismaclouddev-docker-local/rabbitmq:latest'
             }
         }
     }
