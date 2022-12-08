@@ -2,6 +2,17 @@
  pipeline {
     agent any 
     stages {
+      stage('Get Credentials') { 
+        environment {
+          SECRET_FILE_ID = credentials('prismacloudsecrets')
+         }
+            steps {
+                  sh '''#!/bin/bash
+                  echo "####DISPLAYING SECRET_FILE_ID####"
+                  echo "Global property file: ${SECRET_FILE_ID}"
+                '''
+            }
+        }
         stage('Install TwistCli') { 
             environment {
                 USER = credentials('user')
