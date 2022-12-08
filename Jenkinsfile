@@ -1,24 +1,71 @@
-pipeline {
+ 
+ pipeline {
     agent any 
     stages {
-        stage('Install TwistCLI') { 
+        stage('Install TwistCli') { 
+            environment {
+                USER = credentials('user')
+                PASSWORD = credentials('password')
+                CONSOLEURL = credentials('consoleurl')
+            }
             steps {
-                echo 'Install TwistCLI' 
-                curl -k -O -u [USER:PASSWORD] [PRISMACONSOLEURL];
-                chmod a+x twistcli;
+                  sh '''#!/bin/bash
+                  echo "hello world"
+                  echo "Install TwistCLI"
+                  ls
+                  curl -k -O -u ${USER}:${PASSWORD} ${CONSOLEURL}/api/v1/util/twistcli
+                  pwd
+                  ls
+                  chmod a+x twistcli;
+                '''
             }
         }
-        stage('Test') { 
+        stage('Pull Public Docker Image') { 
             steps {
-                echo 'Prisma Image Vulnerability Scan'
-                sudo ./twistcli images scan --details --address [PRISMACONSOLEURL] --u [USER] -p [PASSWORD] 'prismaclouddev.jfrog.io/prismaclouddev-docker-local/rabbitmq:latest'
+                  sh '''#!/bin/bash
+                  docker pull bitnami/rabbitmq
+                '''
             }
         }
-        stage('Deploy') { 
+        stage('Image Vulnerability Scan') { 
+            environment {
+                USER = credentials('user')
+                PASSWORD = credentials('password')
+                CONSOLEURL = credentials('consoleurl')
+            }
             steps {
-                echo 'Prisma Image Analysis Sandbox'  
-                sudo ./twistcli sandbox --analysis-duration 15s --address [PRISMACONSOLEURL] --u [USER] -p [PASSWORD] 'prismaclouddev.jfrog.io/prismaclouddev-docker-local/rabbitmq:latest'
+                  sh '''#!/bin/bash
+                  echo "Start Image Scan"
+                  ./twistcli images scan --details --address ${CONSOLEURL} --u ${USER} -p ${PASSWORD} bitnami/rabbitmq
+                '''
+            }
+        }
+        stage('Runtime - Image Analysis Sandbox') { 
+            environment {
+                USER = credentials('user')
+                PASSWORD = credentials('password')
+                CONSOLEURL = credentials('consoleurl')
+            }
+            steps {
+                  sh '''#!/bin/bash
+                  echo "Start Image Scan"
+                  sudo ./twistcli sandbox --analysis-duration 30s --address ${CONSOLEURL} --u ${USER} -p ${PASSWORD} bitnami/rabbitmq
+                '''
+            }
+        }
+        stage('Push Verified Image to Artifactory') { 
+            environment {
+                ARTIFACTORYTOKEN = credentials('artifactorytoken')
+                ARTIFACTORYUSER = credentials('artifactoryuser')
+                ARTIFACTORYURL = credentials('artifactoryurl')
+            }
+            steps {
+                  sh '''#!/bin/bash
+                  docker login ${ARTIFACTORYURL} -u ${ARTIFACTORYUSER} -p ${ARTIFACTORYTOKEN}
+                  docker tag bitnami/rabbitmq ${ARTIFACTORYURL}/prismaclouddev-docker-local/prisma-rabbitmq:latest
+                  docker push ${ARTIFACTORYURL}/prismaclouddev-docker-local/prisma-rabbitmq:latest
+                '''
             }
         }
     }
-}
+ }
