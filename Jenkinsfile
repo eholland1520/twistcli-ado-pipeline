@@ -15,6 +15,7 @@
         }
         stage('Install TwistCli') { 
             environment {
+                SECRET_FILE_ID = credentials('prismacloudsecrets')
                 USER = credentials('user')
                 PASSWORD = credentials('password')
                 CONSOLEURL = credentials('consoleurl')
@@ -40,6 +41,7 @@
         }
         stage('Image Vulnerability Scan') { 
             environment {
+                SECRET_FILE_ID = credentials('prismacloudsecrets')
                 USER = credentials('user')
                 PASSWORD = credentials('password')
                 CONSOLEURL = credentials('consoleurl')
@@ -53,6 +55,7 @@
         }
         stage('Runtime - Image Analysis Sandbox') { 
             environment {
+                SECRET_FILE_ID = credentials('prismacloudsecrets')
                 USER = credentials('user')
                 PASSWORD = credentials('password')
                 CONSOLEURL = credentials('consoleurl')
@@ -66,6 +69,7 @@
         }
         stage('Push Verified Image to Artifactory') { 
             environment {
+                SECRET_FILE_ID = credentials('prismacloudsecrets')
                 ARTIFACTORYTOKEN = credentials('artifactorytoken')
                 ARTIFACTORYUSER = credentials('artifactoryuser')
                 ARTIFACTORYURL = credentials('artifactoryurl')
