@@ -1,31 +1,23 @@
  
  pipeline {
+     environment {
+      /*
+       * Uses a Jenkins credential called "FOOCredentials" and creates environment variables:
+       * "$FOO" will contain string "USR:PSW"
+       * "$FOO_USR" will contain string for Username
+       * "$FOO_PSW" will contain string for Password
+       */
+      SECR = credentials("prismacloudsecrets")
+    }
     agent any 
     stages {
-      stage('Get Credentials') { 
-        environment {
-          SECRET_FILE_ID = credentials('prismacloudsecrets')
-         }
-            steps {
-                  sh '''#!/bin/bash
-                  echo "####DISPLAYING SECRET_FILE_ID####"
-                  echo "Global property file: ${SECRET_FILE_ID}"
-                '''
-            }
-        }
         stage('Install TwistCli') { 
-            environment {
-                SECRET_FILE_ID = credentials('prismacloudsecrets')
-                USER = credentials('user')
-                PASSWORD = credentials('password')
-                CONSOLEURL = credentials('consoleurl')
-            }
             steps {
                   sh '''#!/bin/bash
                   echo "hello world"
                   echo "Install TwistCLI"
                   ls
-                  curl -k -O -u ${USER}:${PASSWORD} ${CONSOLEURL}/api/v1/util/twistcli
+                  curl -k -O -u $SECR_USER:$SECR_PASSWORD $SECR_CONSOLEURL/api/v1/util/twistcli
                   pwd
                   ls
                   chmod a+x twistcli;
@@ -40,12 +32,6 @@
             }
         }
         stage('Image Vulnerability Scan') { 
-            environment {
-                SECRET_FILE_ID = credentials('prismacloudsecrets')
-                USER = credentials('user')
-                PASSWORD = credentials('password')
-                CONSOLEURL = credentials('consoleurl')
-            }
             steps {
                   sh '''#!/bin/bash
                   echo "Start Image Scan"
@@ -54,12 +40,6 @@
             }
         }
         stage('Runtime - Image Analysis Sandbox') { 
-            environment {
-                SECRET_FILE_ID = credentials('prismacloudsecrets')
-                USER = credentials('user')
-                PASSWORD = credentials('password')
-                CONSOLEURL = credentials('consoleurl')
-            }
             steps {
                   sh '''#!/bin/bash
                   echo "Start Image Scan"
@@ -68,12 +48,6 @@
             }
         }
         stage('Push Verified Image to Artifactory') { 
-            environment {
-                SECRET_FILE_ID = credentials('prismacloudsecrets')
-                ARTIFACTORYTOKEN = credentials('artifactorytoken')
-                ARTIFACTORYUSER = credentials('artifactoryuser')
-                ARTIFACTORYURL = credentials('artifactoryurl')
-            }
             steps {
                   sh '''#!/bin/bash
                   docker login ${ARTIFACTORYURL} -u ${ARTIFACTORYUSER} -p ${ARTIFACTORYTOKEN}
