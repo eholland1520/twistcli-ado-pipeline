@@ -9,7 +9,7 @@
             steps {
                   sh '''#!/bin/bash
                   echo "####DISPLAYING SECRET_FILE_ID####"
-                  echo "Global property file: ${SECRET_FILE_ID}"
+                  echo "Global property file: $SECRET_FILE_ID"
                 '''
             }
         }
@@ -25,7 +25,7 @@
                   echo "hello world"
                   echo "Install TwistCLI"
                   ls
-                  curl -k -O -u ${USER}:${PASSWORD} ${CONSOLEURL}/api/v1/util/twistcli
+                  curl -k -O -u $USER:$PASSWORD $CONSOLEURL/api/v1/util/twistcli
                   pwd
                   ls
                   chmod a+x twistcli;
