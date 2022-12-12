@@ -7,7 +7,7 @@
       ARTIFACTORY_URL = credentials("artifactory_url")
     }
    
-    agent any 
+    agent docker 
     stages {
         stage('Install TwistCli') { 
             steps {
