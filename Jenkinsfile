@@ -6,7 +6,6 @@
       ARTIFACTORY_SECR = credentials("artifactory_secret")
       ARTIFACTORY_URL = credentials("artifactory_url")
     }
-   
     agent any 
     stages {
         stage('Install TwistCli') { 
