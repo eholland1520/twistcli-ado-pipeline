@@ -49,7 +49,7 @@ Azure DevOps Service Connection to the Prsima Cloud Compute console
 
 
 ## 3. Build an Azure Devops Pipeline with TwistCli image scanning
-Now that you have a service account in Prisma Cloud with the DevOps role and the Prisma Compute plugin installed into your organization your are ready to start utilizing TwistCLI from your Azure DevOps pipelines. The example pipeline consists of the following tasks/steps:
+Now that you have a service account in Prisma Cloud with the "Build and Deploy Security" role and the Prisma Compute plugin installed into your organization your are ready to start utilizing TwistCLI from your Azure DevOps pipelines. The example pipeline consists of the following tasks/steps:
 
 1. Build a docker image
 2. Scan a docker image using TwistCLI plugin from Azure Marketplace (Pass/Fail)
