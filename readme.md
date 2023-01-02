@@ -157,3 +157,5 @@ The Prisma Cloud Console lets you drill down into the details of the image scan.
 </p>
 
 
+
+
