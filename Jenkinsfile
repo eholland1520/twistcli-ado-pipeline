@@ -5,6 +5,8 @@
       TWISTLOCK_URL = credentials("prisma_url")
       ARTIFACTORY_SECR = credentials("artifactory_secret")
       ARTIFACTORY_URL = credentials("artifactory_url")
+      ARTIFACTORY_TOKEN = credentials("artifactory_token")
+      ARTIFACTORY_USER = credentials("artifactory_user")
     }
    
     agent any 
@@ -52,7 +54,7 @@
      stage('Push Verified Image to Artifactory') { 
             steps {
                   sh '''#!/bin/bash
-                  docker login ${ARTIFACTORY_URL} -u ${ARTIFACTORY_SECR_USR} -p ${ARTIFACTORY_SECR_PSW}
+                  docker login ${ARTIFACTORY_URL} -u ${ARTIFACTORY_USER} -p ${ARTIFACTORY_TOKEN}
                   docker tag bitnami/rabbitmq ${ARTIFACTORY_URL}/prismaclouddev-docker-local/prisma-rabbitmq:latest
                   docker push ${ARTIFACTORY_URL}/prismaclouddev-docker-local/prisma-rabbitmq:latest
                 '''
