@@ -33,14 +33,6 @@
                 '''
             }
         }
-     stage('Image Vulnerability Scan') { 
-            steps {
-                  sh '''#!/bin/bash
-                  echo "Start Image Scan"
-                  ./twistcli images scan --details --address ${TWISTLOCK_URL} --u ${SECR_USR} -p ${SECR_PSW} bitnami/rabbitmq
-                '''
-            }
-        }
         stage('Runtime - Image Analysis Sandbox') { 
             steps {
                   sh '''#!/bin/bash
