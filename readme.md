@@ -1,4 +1,5 @@
 # Azure DevOps Pipeline with TwistCLI Image Scanning
+
 The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into and Azure DevOps pipeline using either the classic graphical editor in ADO or via YAML pipeline template.
 
 #### Steps 
