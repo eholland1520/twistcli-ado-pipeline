@@ -31,6 +31,7 @@ Now that you have a service account user and a user/password for authentication 
 </p>
 
 ## 2. Install the Prisma Compute plugin
+
 This extension enables Prisma Cloud container image / serverless zip scan functionality from Palo Alto Networks Inc. in Azure DevOps.
 
 Features:
