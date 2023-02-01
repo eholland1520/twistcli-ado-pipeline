@@ -74,65 +74,52 @@ twistcli sandbox --analysis-duration 30s --address ${TWISTLOCK_URL} --u ${SECR_U
 
 #### YAML Pipeline
 ```
-# Variable Group 'prismacloud' was defined in the Variables tab
-resources:
-  repositories:
-  - repository: self
-    type: git
-    ref: refs/heads/prisma
-jobs:
-- job: Job_1
-  displayName: Agent job 1
-  pool:
-    vmImage: ubuntu-18.04
-  steps:
-  - checkout: self
-    fetchDepth: 1
-  - task: Docker@2
-    displayName: Create RabbitMQ Image
-    inputs:
-      containerRegistry: xxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx
-      repository: rabbitmq-prisma
-      command: build
-      tags: prisma
-  - task: prisma-cloud-compute-scan@3
-    displayName: Prisma Cloud Compute Scan
-    inputs:
-      twistlockService: b9b7e07b-50de-4eb8-a8a7-e0befc98c57e
-      artifact: youracrgoeshere.azurecr.io/rabbitmq-prisma:prisma
-  - task: Docker@2
-    displayName: Push RabbitMQ Image to ACR
-    inputs:
-      containerRegistry: xxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx
-      repository: rabbitmq-prisma
-      command: push
-      tags: prisma
-  - task: replacetokens@5
-    displayName: Get Prisma Cloud Secrets From Azure KeyVault
-    inputs:
-      rootDirectory: scripts
-      targetFiles: '**/*.sh'
-      tokenPattern: rm
-      keepToken: true
-  - task: AzureCLI@2
-    displayName: Install TwistCLI
-    inputs:
-      connectedServiceNameARM: yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-      scriptType: bash
-      scriptLocation: inlineScript
-      scriptPath: scripts/install-twistcli.sh
-      inlineScript: >-
-        curl -k -O -u [access key id]:[secret access key] [console url]/api/v1/util/twistcli;
-        chmod a+x twistcli;
-  - task: AzureCLI@2
-    displayName: Scan RabbitMQ Image
-    inputs:
-      connectedServiceNameARM: yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-      scriptType: bash
-      scriptLocation: inlineScript
-      scriptPath: scripts/scan-image.sh
-      inlineScript: ./twistcli images scan --details --address [console url] -u [access key id]:[secret access key] myacr.azurecr.io/rabbitmq-prisma:prisma
-      failOnStandardError: true
+ 
+ pipeline {
+     environment {
+      SECR = credentials("prisma_secret")
+      TWISTLOCK_URL = credentials("prisma_url")
+      ARTIFACTORY_SECR = credentials("artifactory_secret")
+      ARTIFACTORY_URL = credentials("artifactory_url")
+    }
+   
+    agent any 
+    stages {
+        stage('Install TwistCli') { 
+            steps {
+                 sh '''#!/bin/bash
+                  echo "hello world"
+                  echo "Install TwistCLI"
+                  ls
+                  echo $SECR_USER
+                  echo $SECR_CONSOLEURL
+                  echo $SECR_PASSWORD
+                  curl -k -O -u $SECR_USR:$SECR_PSW $TWISTLOCK_URL/api/v1/util/twistcli
+                  pwd
+                  ls
+                  env
+                  chmod a+x twistcli;
+                '''
+            }
+        }
+     stage('Pull Public Docker Image') { 
+            steps {
+                  sh '''#!/bin/bash
+                  docker pull bitnami/rabbitmq
+                '''
+            }
+        }
+        stage('Runtime - Image Analysis Sandbox') { 
+            steps {
+                  sh '''#!/bin/bash
+                  echo "Start Image Scan"
+                  sudo ./twistcli sandbox --analysis-duration 30s --address ${TWISTLOCK_URL} --u ${SECR_USR} -p ${SECR_PSW} bitnami/rabbitmq
+                '''
+            }
+        }
+    }
+ }
+
 ```
 ## 4. View TwistCLI Image Analysis Sandbox Report
 **Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
