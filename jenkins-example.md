@@ -124,7 +124,7 @@ twistcli sandbox --analysis-duration 30s --address ${TWISTLOCK_URL} --u ${SECR_U
 ## 4. View TwistCLI Image Analysis Sandbox Report
 **Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
 <p align="center">
-<img src="images/prisma-cloud-ado-pipeline-twistcli-keyvault-azurecli.png" width="85%">
+<img src="images/jenkins-image-analysis-sandbox.png" width="85%">
 </p>
 
 Detailed results from the image scan can also be viewed from the Prisma Cloud console by navigating to Compute --> Monitor --> Vulnerabilites --> Images --> CI
