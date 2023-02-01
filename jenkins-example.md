@@ -42,9 +42,9 @@ https://marketplace.visualstudio.com/items?itemName=PrismaCloud.build-release-ta
 
 A service connection is created during the isntallation of the the plugin into your Azure DevOps organization. You will have to provide the console url, access key id and the secret access key during the installation process.
 
-Azure DevOps Service Connection to the Prsima Cloud Compute console
+Create Prisma Cloud credentials in Jenkins for pipeline access to the Prsima Cloud Compute console
 <p align="center">
-<img src="images/prisma-cloud-azure-devops-service-connection.png" width="85%">
+<img src="images/jenkins-prisma-cloud-credentials.png" width="85%">
 </p>
 
 
