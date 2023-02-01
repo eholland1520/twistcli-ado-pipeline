@@ -48,20 +48,20 @@ Create Prisma Cloud credentials in Jenkins for pipeline access to the Prsima Clo
 </p>
 
 
-## 3. Build an Azure Devops Pipeline with TwistCli image scanning
-Now that you have a service account in Prisma Cloud with the "Build and Deploy Security" role and the Prisma Compute plugin installed into your organization your are ready to start utilizing TwistCLI from your Azure DevOps pipelines. The example pipeline consists of the following tasks/steps:
+## 3. Jenkins Pipeline with TwistCli Image Analysis Sandbox
+Now that you have a service account in Prisma Cloud with the "Build and Deploy Security" role and the Prisma Compute plugin installed into your organization your are ready to start utilizing TwistCLI from your Jenkins pipelines. The example pipeline consists of the following tasks/steps:
 
 1. Build a docker image
-2. Scan a docker image using TwistCLI plugin from Azure Marketplace (Pass/Fail)
-3. If the image passes the previous, push the image to ACR
+2. Run the docker image using TwistCLI
+3. If the image passes the previous scan, push the image to Artifactory
 
-The next 3 steps in the pipeline demonstrate the same as above utilizing Azure CLI instead of the plugin.
-1. Retrieve access token and console url from Azure Key Vault
+The next 3 steps in the pipeline demonstrate the same as above utilizing twistcli from the command line.
+1. Retrieve access token and console url from Jenkins credentials
 2. Use access key to download and install the TwistCLI binary from the Prisma Cloud console
-3. Scan a docker image using TwistCLI and AzureCLI (Pass/Fail)
+3. Run image analysis using TwistCLI (Pass/Fail)
 
 #### TwistCLI Image Analysis Sandbox Command Line
-The Azure DevOps pipeline executes the following twistcli commands during build pipeline execution.
+The Jenkins pipeline executes the following twistcli commands during build pipeline execution.
 
 ```
 #vDownload the twistcli binary from the console (Task: Install TwistCLI)
