@@ -28,7 +28,7 @@ Now that you have a service account user and a user/password for authentication 
 <img src="images/prisma-cloud-access-control-service-account.png" width="85%">
 </p>
 
-## 2. Install the Prisma Compute plugin
+## 2. Create prisma cloud credentials in Jenkins credential manager
 This extension enables Prisma Cloud container image / serverless zip scan functionality from Palo Alto Networks Inc. in Azure DevOps.
 
 Features:
