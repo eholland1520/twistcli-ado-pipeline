@@ -4,8 +4,8 @@ The following document is provided as high level example of how to integrate Pri
 #### Steps 
 1. Create a Prisma Cloud Service Account with a DevOps role in Prisma Cloud Compute.
 2. Install the Prisma Compute plugin in your Azure DevOps Organization.
-3. Build an Azure DevOps pipeline to scan a docker image for vulnerabilities with TwistCli.
-4. View the vulnerability report produced by the TwistCli image scan.
+3. Build a Jenkins pipeline to run a image analysis sandbox with TwistCli.
+4. View the vulnerability report produced by the TwistCli image analysis sandbox scan.
 
 ## 1. Create Prisma Cloud Service Account
 Settings --> Access Control --> User --> Click "Add" button and select "Service Account". Provide a name for the service account and select "DevOps-role" to enable scanning permissions for the service account.
