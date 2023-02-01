@@ -18,14 +18,9 @@ After creating the service account you will be prompted to create an access key 
 <img src="images/prisma-cloud-access-key-details.png" width="55%">
 </p>
 
-After the access key has been created you are give the access key ID and the access key secret token. These values are the user and password that you will need when authenticating to the consolfe from your Azure DevOps pipeline. Be sure to save these values in a secure place (Azure Keyvault).
+After the access key has been created you are give the access key ID and the access key secret token. These values are the user and password that you will need when authenticating to the consolfe from your Jenkins pipeline. Be sure to save these values in a secure place (Jenkins Credential Manager).
 <p align="center">
 <img src="images/prisma-cloud-access-key-results.png" width="55%">
-</p>
-
-Now that you have a service account user and a user/password for authentication you can move on to Azure DevOps.
-<p align="center">
-<img src="images/prisma-cloud-access-control-service-account.png" width="85%">
 </p>
 
 ## 2. Create prisma cloud credentials in Jenkins credential manager
@@ -122,7 +117,7 @@ twistcli sandbox --analysis-duration 30s --address ${TWISTLOCK_URL} --u ${SECR_U
 
 ```
 ## 4. View TwistCLI Image Analysis Sandbox Report
-**Note**: The following screenshot shows the output of an image scan from an Azure DevOps pipeline.
+**Note**: The following screenshot shows the output of an image scan from a Jenkins pipeline.
 <p align="center">
 <img src="images/jenkins-image-analysis-sandbox.png" width="85%">
 </p>
