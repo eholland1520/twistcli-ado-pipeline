@@ -1,5 +1,5 @@
 # Jenkins Pipeline with TwistCLI Image Scanning
-The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into and Azure DevOps pipeline using either the classic graphical editor in ADO or via YAML pipeline template.
+The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into a Jenkins pipeline using a groovy script.
 
 #### Steps 
 1. Create a Prisma Cloud Service Account with a DevOps role in Prisma Cloud Compute.
