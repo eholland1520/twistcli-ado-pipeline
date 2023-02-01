@@ -72,7 +72,7 @@ chmod a+x twistcli;
 twistcli sandbox --analysis-duration 30s --address ${TWISTLOCK_URL} --u ${SECR_USR} -p ${SECR_PSW} bitnami/rabbitmq
 ```
 
-#### YAML Pipeline
+#### Groovy Pipeline
 ```
  
  pipeline {
