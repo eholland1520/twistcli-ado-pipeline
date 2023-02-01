@@ -1,4 +1,4 @@
-# Jenkins Pipeline with TwistCLI Image Scanning
+# Jenkins Pipeline with TwistCLI Image Analysis Sandbox
 The following document is provided as high level example of how to integrate Prisma Cloud TwistCLI into a Jenkins pipeline using a groovy script.
 
 #### Steps 
